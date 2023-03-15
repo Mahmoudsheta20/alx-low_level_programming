@@ -1,33 +1,39 @@
 #include "main.h"
 #include <stdlib.h>
 /**
- * create_array - Main Entry
- * @size: input
- * @c: input
+ * _strdup - Main Entry
+ * @str: input
  * Return: 0
  */
-char *create_array(unsigned int size, char c)
+char *_strdup(char *str)
 {
-		char *arr;
-		unsigned int i;
+	char *nstr;
+	unsigned int len, i;
 
-		if (size == 0)
-		{
-			return (NULL);
-		}
+	/* check is str is null */
+	if (str == NULL)
+	{
+		return (NULL);
+	}
 
-		arr = malloc(sizeof(char) * size);
+	len = 0;
+	while (str[len] != '\0')
+	{
+		len++;
+	}
 
-		if (arr == NULL)
-		{
+	nstr = malloc(sizeof(char) * (len + 1));
 
-			return (NULL);
-		}
+	/*check if malloc was successful*/
+	if (nstr == NULL)
+	{
+		return (NULL);
+	}
 
-		for (i = 0; i < size; i++)
-		{
-			arr[i] = c;
-		}
-
-		return (arr);
+	for (i = 0; i < len; i++)
+	{
+		nstr[i] = str[i];
+	}
+	nstr[len] = '\0';
+	return (nstr);
 }
